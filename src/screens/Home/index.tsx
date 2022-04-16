@@ -3,15 +3,11 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {colors} from 'src/utils/theme';
 import {
   DownIcon,
@@ -26,12 +22,13 @@ import {
 import {formatCurrency} from 'src/utils/formatter';
 import TransactionItem from 'src/components/TransactionItem';
 import RequestItem from 'src/components/RequestItem';
+import CustomStatusBar from 'src/components/CustomStatusBar';
 import styles from './styles';
 
-const Home = () => {
+const Home = ({navigation}: ScreenProp) => {
   return (
     <SafeAreaProvider>
-      <CustomStatusBar />
+      <CustomStatusBar color={colors.THUNDER} barStyle="light-content" />
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <View style={styles.flexRow}>
@@ -62,7 +59,10 @@ const Home = () => {
               <SwapIcon />
               <Text style={styles.headerFooterText}>Exchange</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={styles.sendFunds}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.sendFunds}
+              onPress={() => navigation.navigate('SendFunds')}>
               <SendIcon />
               <Text style={styles.headerFooterText}>Send Funds</Text>
             </TouchableOpacity>
@@ -148,25 +148,6 @@ const Home = () => {
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
-  );
-};
-
-const CustomStatusBar = () => {
-  const {top} = useSafeAreaInsets();
-  return (
-    <View
-      style={{
-        height: StatusBar.currentHeight || top,
-        backgroundColor: colors.THUNDER,
-      }}>
-      <SafeAreaView style={{backgroundColor: colors.THUNDER}}>
-        <StatusBar
-          translucent
-          barStyle="light-content"
-          backgroundColor={colors.THUNDER}
-        />
-      </SafeAreaView>
-    </View>
   );
 };
 

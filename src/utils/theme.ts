@@ -12,6 +12,10 @@ export const colors = {
   KOROMIKO: '#FCB667',
   ALTO: '#DADADA',
   SEASHELL_PEACH: '#FFF7EE',
+  HAITI: '#200E32',
+  SANTAS_GREY: '#A2A2BA',
+  BLACK: '#000000',
+  ZIRCON: '#F8FAFF',
 };
 
 export const typography = {

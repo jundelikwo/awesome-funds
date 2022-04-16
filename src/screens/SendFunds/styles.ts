@@ -1,0 +1,140 @@
+import {StyleSheet} from 'react-native';
+import {colors, typography} from 'src/utils/theme';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.WHITE,
+  },
+  title: {
+    fontSize: 16,
+    lineHeight: 20,
+    fontFamily: typography.EUCLID_CIRCULAR_A_SEMIBOLD,
+    color: colors.HAITI,
+    textAlign: 'center',
+    flex: 1,
+    paddingRight: 32,
+  },
+  heading: {
+    paddingHorizontal: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  balanceView: {
+    height: 35,
+    marginVertical: 10,
+    paddingHorizontal: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: colors.CONCRETE,
+    backgroundColor: colors.WHITE,
+    borderRadius: 30,
+  },
+  balance: {
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.THUNDER,
+    opacity: 0.5,
+  },
+  balanceText: {
+    opacity: 0.4,
+  },
+  header: {
+    paddingTop: 12,
+    paddingBottom: 18,
+    backgroundColor: colors.CATSKILL_WHITE,
+  },
+  currency: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.TUNDORA,
+    paddingRight: 6,
+  },
+  currencyView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  amountText: {
+    fontSize: 12,
+    lineHeight: 17,
+    fontFamily: typography.EUCLID_CIRCULAR_A_REGULAR,
+    color: colors.THUNDER,
+  },
+  amount: {
+    fontSize: 40,
+    lineHeight: 51,
+    fontFamily: typography.EUCLID_CIRCULAR_A_BOLD,
+    color: colors.THUNDER,
+  },
+  amountView: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
+  flexRow: {
+    flexDirection: 'row',
+    paddingHorizontal: 24,
+  },
+  withdrawal: {
+    color: colors.SANTAS_GREY,
+    fontSize: 10,
+    lineHeight: 12,
+    textAlign: 'center',
+    opacity: 0.51,
+    fontFamily: typography.EUCLID_CIRCULAR_A_REGULAR,
+  },
+  sendTo: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.THUNDER,
+    opacity: 0.5,
+    paddingRight: 8,
+  },
+  sendToBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+    marginTop: 32,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    backgroundColor: colors.WHITE,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: colors.CONCRETE,
+    alignSelf: 'center',
+  },
+  chargeText: {
+    fontSize: 12,
+    lineHeight: 20,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.TUNDORA,
+  },
+  charge: {
+    backgroundColor: colors.ZIRCON,
+    paddingVertical: 8,
+    marginHorizontal: 40,
+    alignItems: 'center',
+    borderRadius: 8,
+    marginBottom: 24,
+  },
+  btn: {
+    backgroundColor: colors.THUNDER,
+    marginHorizontal: 24,
+    height: 55,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnText: {
+    fontSize: 16,
+    lineHeight: 22,
+    fontFamily: typography.EUCLID_CIRCULAR_A_BOLD,
+    color: colors.WHITE,
+  },
+});
+
+export default styles;
