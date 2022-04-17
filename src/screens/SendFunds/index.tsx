@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -9,7 +9,13 @@ import {
   View,
 } from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {AltDownIcon, BackIcon, CloseIcon, DownIcon} from 'src/components/SVGs';
+import {
+  AltDownIcon,
+  BackIcon,
+  CloseIcon,
+  DownIcon,
+  SuccessWithdrawalIcon,
+} from 'src/components/SVGs';
 import CustomStatusBar from 'src/components/CustomStatusBar';
 import {colors} from 'src/utils/theme';
 import {formatCurrency} from 'src/utils/formatter';
@@ -76,10 +82,23 @@ const friends: UserType[] = [
 const SendFunds = ({navigation}: ScreenProp) => {
   const [accountNumber, setAccountNumber] = useState('');
   const [amount, setAmount] = useState('');
+  const [pin, setPin] = useState('');
+  const [formattedAmount, setFormattedAmount] = useState('');
   const [searchText, setSearchText] = useState('');
   const [sendToTab, setSendToTab] = useState<'tag' | 'bank'>('tag');
   const [selectedUser, setSelectedUser] = useState<UserType>();
   const sendToSheet = useRef<any>(null);
+  const transactionSheet = useRef<any>(null);
+  const successSheet = useRef<any>(null);
+
+  useEffect(() => {
+    const newAmount = formatCurrency({
+      amount: parseInt(amount, 10) * 100,
+      hideCurrency: true,
+      nairaOnly: true,
+    });
+    setFormattedAmount(newAmount);
+  }, [amount]);
 
   const handleNumPadPress = useCallback(
     (action: NumPadActionType) => {
@@ -93,6 +112,31 @@ const SendFunds = ({navigation}: ScreenProp) => {
       setAmount(parseInt(newAmount, 10).toString());
     },
     [amount],
+  );
+
+  const handlePinNumPadPress = useCallback(
+    (action: NumPadActionType) => {
+      let newPin = pin;
+      if (action === 'back') {
+        newPin = newPin.substring(0, newPin.length - 1);
+      } else if (newPin.length < 4) {
+        newPin += action;
+      } else {
+        newPin = newPin.substring(0, newPin.length - 1);
+        newPin += action;
+      }
+
+      setPin(newPin);
+
+      if (newPin.length === 4) {
+        transactionSheet.current.close();
+
+        setTimeout(() => {
+          successSheet.current.open();
+        }, 250);
+      }
+    },
+    [pin],
   );
 
   return (
@@ -118,13 +162,7 @@ const SendFunds = ({navigation}: ScreenProp) => {
             </View>
             <View style={styles.amountView}>
               <Text style={styles.amountText}>Amount</Text>
-              <Text style={styles.amount}>
-                {formatCurrency({
-                  amount: parseInt(amount, 10) * 100,
-                  hideCurrency: true,
-                  nairaOnly: true,
-                })}
-              </Text>
+              <Text style={styles.amount}>{formattedAmount}</Text>
             </View>
           </View>
           <TouchableOpacity
@@ -163,7 +201,10 @@ const SendFunds = ({navigation}: ScreenProp) => {
               You will be charged 0 NGN to fund NGN Wallet
             </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7} style={styles.btn}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={styles.btn}
+            onPress={() => transactionSheet.current.open()}>
             <Text style={styles.btnText}>Continue</Text>
           </TouchableOpacity>
         </ScrollView>
@@ -311,8 +352,54 @@ const SendFunds = ({navigation}: ScreenProp) => {
           </ScrollView>
           <TouchableOpacity
             activeOpacity={0.7}
-            style={[styles.btn, styles.sheetBtn]}>
+            style={[styles.btn, styles.sheetBtn]}
+            onPress={() => sendToSheet.current.close()}>
             <Text style={styles.btnText}>Send Funds</Text>
+          </TouchableOpacity>
+        </BottomSheet>
+        <BottomSheet
+          height={620}
+          back
+          forwardedRef={transactionSheet}
+          title="Your Transaction PIN">
+          <Text style={styles.transactionPinText}>
+            You are about to send{' '}
+            <Text style={styles.transactionPinBold}>
+              {formattedAmount} NGN{' '}
+            </Text>
+            from your naira wallet to{' '}
+            <Text style={styles.transactionPinBold}>{selectedUser?.tag}</Text>
+          </Text>
+          <View style={styles.pinCodeRow}>
+            <View style={styles.pinCodeView}>
+              <Text style={styles.pinCode}>{pin[0]}</Text>
+            </View>
+            <View style={styles.pinCodeView}>
+              <Text style={styles.pinCode}>{pin[1]}</Text>
+            </View>
+            <View style={styles.pinCodeView}>
+              <Text style={styles.pinCode}>{pin[2]}</Text>
+            </View>
+            <View style={styles.pinCodeView}>
+              <Text style={styles.pinCode}>{pin[3]}</Text>
+            </View>
+          </View>
+          <NumPad onPress={handlePinNumPadPress} face />
+        </BottomSheet>
+        <BottomSheet height={450} forwardedRef={successSheet}>
+          <View style={styles.successIcon}>
+            <SuccessWithdrawalIcon />
+          </View>
+          <Text style={styles.successDescription}>
+            You sent {formattedAmount} NGN to {selectedUser?.tag} from your NGN
+            Wallet
+          </Text>
+          <Text style={styles.payment}>Payment should arrive in instantly</Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => successSheet.current.close()}
+            style={[styles.btn, styles.successBtn]}>
+            <Text style={styles.btnText}>View Transaction Details</Text>
           </TouchableOpacity>
         </BottomSheet>
       </SafeAreaView>

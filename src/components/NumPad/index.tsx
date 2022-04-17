@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {BackArrowIcon} from 'src/components/SVGs';
+import {BackArrowIcon, FaceIdIcon} from 'src/components/SVGs';
 import styles from './styles';
 
 export type NumPadActionType =
@@ -18,10 +18,11 @@ export type NumPadActionType =
   | 'back';
 
 interface NumPadProps {
+  face?: boolean;
   onPress: (action: NumPadActionType) => void;
 }
 
-const NumPad = ({onPress}: NumPadProps) => (
+const NumPad = ({face, onPress}: NumPadProps) => (
   <View style={styles.container}>
     <View style={styles.row}>
       <TouchableOpacity
@@ -87,8 +88,12 @@ const NumPad = ({onPress}: NumPadProps) => (
       <TouchableOpacity
         activeOpacity={0.7}
         style={styles.btn}
-        onPress={() => onPress('00')}>
-        <Text style={styles.text}>00</Text>
+        onPress={() => {
+          if (!face) {
+            onPress('00');
+          }
+        }}>
+        {face ? <FaceIdIcon /> : <Text style={styles.text}>00</Text>}
       </TouchableOpacity>
       <TouchableOpacity
         activeOpacity={0.7}

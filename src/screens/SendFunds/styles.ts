@@ -297,6 +297,65 @@ const styles = StyleSheet.create({
   accountName: {
     backgroundColor: colors.CATSKILL_WHITE,
   },
+  transactionPinText: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: typography.EUCLID_CIRCULAR_A_REGULAR,
+    textAlign: 'center',
+    color: colors.TUNDORA,
+    marginVertical: 44,
+    paddingHorizontal: 7,
+  },
+  transactionPinBold: {
+    fontFamily: typography.EUCLID_CIRCULAR_A_SEMIBOLD,
+    color: colors.THUNDER,
+  },
+  pinCodeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 33,
+    marginBottom: 18,
+  },
+  pinCode: {
+    fontSize: 16,
+    lineHeight: 26,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.HAITI,
+    textAlign: 'center',
+  },
+  pinCodeView: {
+    height: 40,
+    width: 45,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.MERCURY,
+  },
+  successIcon: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  successBtn: {
+    marginHorizontal: 0,
+  },
+  successDescription: {
+    fontSize: 16,
+    lineHeight: 22,
+    fontFamily: typography.EUCLID_CIRCULAR_A_REGULAR,
+    textAlign: 'center',
+    color: colors.HAITI,
+    marginVertical: 35,
+    paddingHorizontal: 24,
+  },
+  payment: {
+    fontSize: 12,
+    lineHeight: 17,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    textAlign: 'center',
+    color: colors.THUNDER,
+    paddingHorizontal: 24,
+    opacity: 0.5,
+    marginBottom: 32,
+  },
 });
 
 export default styles;
