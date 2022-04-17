@@ -16,6 +16,12 @@ export const colors = {
   SANTAS_GREY: '#A2A2BA',
   BLACK: '#000000',
   ZIRCON: '#F8FAFF',
+  DUSTY_GREY: '#979797',
+  SILVER: '#C4C4C4',
+  AZURE: '#0085FF',
+  MERCURY: '#E6E6E6',
+  ORANGE: '#FC573B',
+  GRAY_NURSE: '#E7ECE8',
 };
 
 export const typography = {

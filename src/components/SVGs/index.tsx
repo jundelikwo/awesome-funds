@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Svg, {ClipPath, Defs, G, Mask, Path, Rect} from 'react-native-svg';
+import Svg, {Circle, ClipPath, Defs, G, Mask, Path, Rect} from 'react-native-svg';
 import {colors} from 'src/utils/theme';
 
 interface IconProp {
@@ -203,12 +203,31 @@ RightArrowIcon.defaultProps = {
   width: 12,
 };
 
-export function CloseIcon({width, height}: IconProp) {
+export function AltDownIcon({width, height}: IconProp) {
+  return (
+    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M19 8.5L12 15.5L5 8.5"
+        stroke="#200E32"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+AltDownIcon.defaultProps = {
+  height: 24,
+  width: 24,
+};
+
+export function CloseIcon({width, height, color}: IconProp) {
   return (
     <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M12 0C5.38367 0 0 5.38367 0 12C0 18.6163 5.38367 24 12 24C18.6163 24 24 18.6163 24 12C24 5.38367 18.6163 0 12 0ZM16.4191 15.0059C16.8091 15.3959 16.8091 16.0291 16.4191 16.4205C16.2239 16.6154 15.9675 16.7131 15.7126 16.7131C15.4574 16.7131 15.201 16.6154 15.0059 16.4205L12 13.4147L8.99414 16.4205C8.79895 16.6154 8.5426 16.7131 8.28735 16.7131C8.03101 16.7131 7.77612 16.6154 7.58093 16.4205C7.19092 16.0305 7.19092 15.3973 7.58093 15.0059L10.5853 12L7.57947 8.99414C7.18945 8.60413 7.18945 7.97095 7.57947 7.57947C7.96948 7.18799 8.60266 7.18945 8.99414 7.57947L12 10.5853L15.0059 7.57947C15.3959 7.18945 16.0291 7.18945 16.4205 7.57947C16.812 7.96948 16.8105 8.60266 16.4205 8.99414L13.4147 12L16.4191 15.0059Z"
-        fill="#979797"
+        fill={color}
       />
     </Svg>
   );
@@ -217,6 +236,7 @@ export function CloseIcon({width, height}: IconProp) {
 CloseIcon.defaultProps = {
   height: 24,
   width: 24,
+  color: colors.DUSTY_GREY,
 };
 
 export function CreditIcon({width, height}: IconProp) {
@@ -374,4 +394,32 @@ export function BookmarkIcon({width, height}: IconProp) {
 BookmarkIcon.defaultProps = {
   height: 24,
   width: 32,
+};
+
+export function SearchIcon({width, height}: IconProp) {
+  return (
+    <Svg width={width} height={height} viewBox="0 0 16 16" fill="none">
+      <Circle
+        cx="7.84442"
+        cy="7.84439"
+        r="5.99237"
+        stroke="#DADADA"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M12.0122 12.3234L14.3616 14.6667"
+        stroke="#DADADA"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+SearchIcon.defaultProps = {
+  height: 16,
+  width: 16,
 };

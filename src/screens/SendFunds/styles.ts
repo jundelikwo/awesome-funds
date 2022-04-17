@@ -135,6 +135,168 @@ const styles = StyleSheet.create({
     fontFamily: typography.EUCLID_CIRCULAR_A_BOLD,
     color: colors.WHITE,
   },
+  tabView: {
+    paddingTop: 32,
+    paddingBottom: 24,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tab: {
+    paddingVertical: 4,
+    borderWidth: 1,
+    borderColor: colors.WHITE,
+    paddingHorizontal: 8,
+  },
+  space: {
+    width: 8,
+  },
+  activeTab: {
+    borderWidth: 1,
+    borderColor: colors.CONCRETE,
+    backgroundColor: colors.WHITE,
+    borderRadius: 8,
+  },
+  tabText: {
+    fontSize: 12,
+    lineHeight: 15,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.DUSTY_GREY,
+  },
+  activeTabText: {
+    color: colors.THUNDER,
+  },
+  sheetBtn: {
+    bottom: 40,
+    width: '100%',
+    position: 'absolute',
+  },
+  sheetScrollView: {
+    paddingBottom: 80,
+  },
+  search: {
+    paddingBottom: 24,
+  },
+  sendToUser: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingRight: 6,
+  },
+  sendToNameView: {
+    paddingLeft: 8,
+  },
+  selectedUser: {
+    padding: 4,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: colors.MERCURY,
+    borderRadius: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '30%',
+  },
+  selectedUserClose: {
+    position: 'absolute',
+    right: 0,
+    top: -5,
+  },
+  selectedUserImage: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+  },
+  selectedUserNameView: {
+    paddingLeft: 8,
+    flex: 1,
+  },
+  userBtn: {
+    paddingHorizontal: 16,
+    marginBottom: 16,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: colors.CONCRETE,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  userNameView: {
+    paddingHorizontal: 16,
+    flex: 1,
+  },
+  userInActive: {
+    width: 23,
+    height: 23,
+    borderRadius: 23,
+    borderWidth: 1,
+    borderColor: colors.ALTO,
+  },
+  userActive: {
+    backgroundColor: colors.THUNDER,
+  },
+  userName: {
+    fontSize: 12,
+    lineHeight: 17,
+    fontFamily: typography.EUCLID_CIRCULAR_A_SEMIBOLD,
+    color: colors.THUNDER,
+  },
+  userTag: {
+    fontSize: 10,
+    lineHeight: 13,
+    fontFamily: typography.EUCLID_CIRCULAR_A_REGULAR,
+    color: colors.THUNDER,
+    opacity: 0.5,
+  },
+  userSection: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.TUNDORA,
+    marginBottom: 8,
+  },
+  label: {
+    fontSize: 12,
+    lineHeight: 19,
+    fontFamily: typography.EUCLID_CIRCULAR_A_MEDIUM,
+    color: colors.THUNDER,
+  },
+  placeholder: {
+    fontSize: 14,
+    lineHeight: 22,
+    opacity: 0.5,
+    fontFamily: typography.EUCLID_CIRCULAR_A_REGULAR,
+    color: colors.THUNDER,
+  },
+  bankNameView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 8,
+    paddingTop: 1,
+    borderBottomWidth: 1,
+    borderColor: colors.GRAY_NURSE,
+  },
+  margin24Bottom: {
+    marginBottom: 24,
+  },
+  accountNumber: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: typography.EUCLID_CIRCULAR_A_REGULAR,
+    color: colors.THUNDER,
+    paddingBottom: 8,
+    paddingTop: 1,
+    borderBottomWidth: 1,
+    borderColor: colors.GRAY_NURSE,
+    marginBottom: 24,
+  },
+  accountName: {
+    backgroundColor: colors.CATSKILL_WHITE,
+  },
 });
 
 export default styles;
